@@ -46,7 +46,7 @@ def requestVideo():
     
     try:       
         # 'http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/gettitlefromaajtk/'
-        r=requests.get('http://127.0.0.1:8000/entertain_news/gettitlefromaajtk/')
+        r=requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/gettitlefromaajtk/')
         print(r)
 
         title=(r.json()['title'])
