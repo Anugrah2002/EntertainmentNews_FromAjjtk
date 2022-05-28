@@ -39,10 +39,12 @@ os.system('pip install unidecode')
 os.system('pip3 uninstall numpy -y')
 os.system('rm -rf ~/.local/lib/python3.6/site-packages/numpy')
 os.system('pip install numpy')
-
-from tts_infer.tts import TextToMel, MelToWav
-from tts_infer.transliterate import XlitEngine
-from tts_infer.num_to_word_on_sent import normalize_nums
+print('line 42')
+os.system('pwd')
+print('line 44')
+from tts import TextToMel, MelToWav
+from transliterate import XlitEngine
+from num_to_word_on_sent import normalize_nums
 
 import re
 from scipy.io.wavfile import write
