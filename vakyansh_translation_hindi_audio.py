@@ -34,6 +34,7 @@ os.system('rm glow.zip')
 os.system('rm hifi.zip')
 
 os.chdir('/workspace/EntertainmentNews_FromAjjtk/vakyansh-tts')
+os.chdir('vakyansh-tts')
 
 os.system('pip install unidecode')
 os.system('pip3 uninstall numpy -y')
@@ -50,6 +51,8 @@ device = 'cpu'
 
 text_to_mel = TextToMel(glow_model_dir='/workspace/EntertainmentNews_FromAjjtk/vakyansh-tts/tts_infer/translit_models/hindi/glow_ckp', device=device)
 mel_to_wav = MelToWav(hifi_model_dir='/workspace/EntertainmentNews_FromAjjtk/vakyansh-tts/tts_infer/translit_models/hindi/hifi_ckp', device=device)
+text_to_mel = TextToMel(glow_model_dir='vakyansh-tts/tts_infer/translit_models/hindi/glow_ckp', device=device)
+mel_to_wav = MelToWav(hifi_model_dir='vakyansh-tts/tts_infer/translit_models/hindi/hifi_ckp', device=device)
 
 def translit(text, lang):
     print('translit line 55')
