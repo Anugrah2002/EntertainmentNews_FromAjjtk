@@ -40,7 +40,7 @@ os.system('pip3 uninstall numpy -y')
 os.system('rm -rf ~/.local/lib/python3.6/site-packages/numpy')
 os.system('pip install numpy')
 
-from tts_infer.tts import TextToMel, MelToWav
+from ..tts import TextToMel, MelToWav
 from tts_infer.transliterate import XlitEngine
 from tts_infer.num_to_word_on_sent import normalize_nums
 
