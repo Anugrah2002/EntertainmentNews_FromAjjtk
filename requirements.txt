@@ -45,7 +45,6 @@ tqdm==4.48.2
 uritemplate==3.0.1
 urllib3==1.25.10
 xmltodict==0.12.0
-cloudinary 1.24.0
 Cython==0.29.24
 layers==0.1.5
 librosa==0.8.1
