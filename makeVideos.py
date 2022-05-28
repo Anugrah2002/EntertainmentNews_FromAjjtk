@@ -8,6 +8,7 @@ from gtts import gTTS,tts
 import shutil
 from moviepy.editor import *
 import settings
+from vakyansh_translation_hindi_audio import *
 
 
 
@@ -17,7 +18,7 @@ def makeAudio(name,content):
     try:
         try:
             os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
-            ttsG = gTTS(content,lang='hi')
+            ttsG = run_tts(content,'hi')
             ttsG.save('audio.mp3')
         except tts.gTTSError as e:
             print(e)
