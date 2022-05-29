@@ -43,17 +43,19 @@ os.system('pip install numpy')
 print('line 42')
 os.system('pwd')
 print('line 44')
-sys.path.insert(1, 'EntertainmentNews_FromAjjtk/vakyansh-tts/tts_infer')
-import tts
-import transliterate
-import num_to_word_on_sent
+# sys.path.insert(1, 'EntertainmentNews_FromAjjtk/vakyansh-tts/tts_infer')
+from tts_infer.tts import TextToMel, MelToWav
+from tts_infer.num_to_word_on_sent import normalize_nums
+from tts_infer.transliterate import XlitEngine
+
+
 
 import re
 from scipy.io.wavfile import write
 device = 'cpu'
 
-text_to_mel = tts.TextToMel(glow_model_dir='translit_models/hindi/glow_ckp', device=device)
-mel_to_wav = tts.MelToWav(hifi_model_dir='translit_models/hindi/hifi_ckp', device=device)
+text_to_mel = TextToMel(glow_model_dir='translit_models/hindi/glow_ckp', device=device)
+mel_to_wav = MelToWav(hifi_model_dir='translit_models/hindi/hifi_ckp', device=device)
 
 def translit(text, lang):
     reg = re.compile(r'[a-zA-Z]')
