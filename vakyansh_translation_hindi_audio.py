@@ -8,6 +8,7 @@ Original file is located at
 """
 
 import os
+import sys
 
 
 os.system('git clone https://github.com/Open-Speech-EkStep/vakyansh-tts')
@@ -42,27 +43,28 @@ os.system('pip install numpy')
 print('line 42')
 os.system('pwd')
 print('line 44')
-from EntertainmentNews_FromAjjtktts_infer.vakyaansh.tts_infer.tts import TextToMel, MelToWav
-from tts_infer.transliterate import XlitEngine
-from tts_infer.num_to_word_on_sent import normalize_nums
+sys.path.append('vakyansh-tts/tts_infer')
+import tts
+import transliterate
+import num_to_word_on_sent
 
 import re
 from scipy.io.wavfile import write
 device = 'cpu'
 
-text_to_mel = TextToMel(glow_model_dir='translit_models/hindi/glow_ckp', device=device)
-mel_to_wav = MelToWav(hifi_model_dir='translit_models/hindi/hifi_ckp', device=device)
+text_to_mel = tts.TextToMel(glow_model_dir='translit_models/hindi/glow_ckp', device=device)
+mel_to_wav = tts.MelToWav(hifi_model_dir='translit_models/hindi/hifi_ckp', device=device)
 
 def translit(text, lang):
     reg = re.compile(r'[a-zA-Z]')
-    engine = XlitEngine(lang)
+    engine = transliterate.XlitEngine(lang)
     words = [engine.translit_word(word, topk=1)[lang][0] if reg.match(word) else word for word in text.split()]
     updated_sent = ' '.join(words)
     return updated_sent
     
 def run_tts(text, lang):
     text = text.replace('।', '.') # only for hindi models
-    text_num_to_word = normalize_nums(text, lang) # converting numbers to words in lang
+    text_num_to_word = num_to_word_on_sent.normalize_nums(text, lang) # converting numbers to words in lang
     text_num_to_word_and_transliterated = translit(text_num_to_word, lang) # transliterating english words to lang
     
     mel = text_to_mel.generate_mel(text_num_to_word_and_transliterated, noise_scale=0.632, length_scale=0.80)
