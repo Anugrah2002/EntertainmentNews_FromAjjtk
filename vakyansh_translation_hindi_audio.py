@@ -43,7 +43,7 @@ os.system('pip install numpy')
 print('line 42')
 os.system('pwd')
 print('line 44')
-sys.path.insert(1, '../vakyansh-tts/tts_infer')
+sys.path.insert(1, 'EntertainmentNews_FromAjjtk/vakyansh-tts/tts_infer')
 import tts
 import transliterate
 import num_to_word_on_sent
