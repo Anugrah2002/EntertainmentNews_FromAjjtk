@@ -42,9 +42,9 @@ os.system('pip install numpy')
 print('line 42')
 os.system('pwd')
 print('line 44')
-from tts import TextToMel, MelToWav
-from transliterate import XlitEngine
-from num_to_word_on_sent import normalize_nums
+from tts_infer.tts import TextToMel, MelToWav
+from tts_infer.transliterate import XlitEngine
+from tts_infer.num_to_word_on_sent import normalize_nums
 
 import re
 from scipy.io.wavfile import write
