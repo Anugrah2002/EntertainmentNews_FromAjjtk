@@ -11,7 +11,7 @@ import os
 import sys
 
 
-os.system('git clone https://github.com/Open-Speech-EkStep/vakyansh-tts')
+os.system('git clone https://github.com/mashuk999/vakyansh-tts.git')
 os.chdir('vakyansh-tts') 
 os.system('bash install.sh')
 os.system('python setup.py bdist_wheel')
