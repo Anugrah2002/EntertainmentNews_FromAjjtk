@@ -36,10 +36,6 @@ os.system('rm hifi.zip')
 
 os.chdir('../../')
 
-os.system('pip install unidecode')
-os.system('pip3 uninstall numpy -y')
-os.system('rm -rf ~/.local/lib/python3.6/site-packages/numpy')
-os.system('pip install numpy')
 print('line 42')
 os.system('pwd')
 print('line 44')
