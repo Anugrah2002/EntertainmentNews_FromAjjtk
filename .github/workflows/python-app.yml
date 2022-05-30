@@ -46,14 +46,14 @@ jobs:
           ${{ runner.os }}-
     - name: Install dependencies
       run: |
-        # pip install flake8 
+        pip install flake8 
         python -m pip install --upgrade gtts
         python -m pip install --upgrade gtts-token
         pip install cloudinary
         pip install opencv-python
         pip install -r requirements.txt
         pip install firebase
-        pip install SoundFile
+        sudo apt-get install libsndfile1
         pip install httplib2==0.15.0
         pip install google-api-python-client==1.6
         pip install firebase-admin
