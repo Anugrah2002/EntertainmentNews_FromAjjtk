@@ -53,6 +53,7 @@ jobs:
         pip install opencv-python
         pip install -r requirements.txt
         pip install firebase
+        pip install SoundFile
         pip install httplib2==0.15.0
         pip install google-api-python-client==1.6
         pip install firebase-admin
