@@ -77,6 +77,7 @@ def requestVideo():
         keywords = ','.join(str(YTtitle).split())
 
         print(YTtitle)
+        print("Video is generated")
 
         #command = 'python ./bott/uploadToYT.py --file="'+str(p)+'" --title="'+YTtitle+'" --description="'+(summary+'\n'+credit)+'" --keywords="'+keywords+',hour news,news" --category="24" --privacyStatus="public" --noauth_local_webserver ' 
         # uploadvideotoheroku(p,YTtitle)
