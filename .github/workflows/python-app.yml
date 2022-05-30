@@ -70,6 +70,7 @@ jobs:
         pip install moviepy
         pip install ez_setup
         pip install flake8 
+        sudo apt-get install libsndfile1
         
         
 #     - name: Lint with flake8
