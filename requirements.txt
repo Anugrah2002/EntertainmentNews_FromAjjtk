@@ -33,6 +33,7 @@ pyasn1-modules==0.2.8
 pymongo==3.11.0
 pyser==0.1.5
 python-utils==2.4.0
+python-jwt
 pytz==2020.1
 requests==2.24.0
 rsa==4.6
