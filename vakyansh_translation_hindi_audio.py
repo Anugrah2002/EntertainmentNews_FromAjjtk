@@ -67,5 +67,5 @@ def run_tts(text, lang):
     
     mel = text_to_mel.generate_mel(text_num_to_word_and_transliterated, noise_scale=0.632, length_scale=0.80)
     audio, sr = mel_to_wav.generate_wav(mel)
-    write(filename='temp.wav', rate=sr, data=audio) # for saving wav file, if needed
+    write(filename='audio.p3', rate=sr, data=audio) # for saving wav file, if needed
     return (sr, audio)
