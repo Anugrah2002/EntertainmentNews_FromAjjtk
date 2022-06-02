@@ -60,12 +60,12 @@ def translit(text, lang):
     updated_sent = ' '.join(words)
     return updated_sent
     
-def run_tts(text, lang):
+def run_tts(text, lang, filepathtosave):
     text = text.replace('।', '.') # only for hindi models
     text_num_to_word = num_to_word_on_sent.normalize_nums(text, lang) # converting numbers to words in lang
     text_num_to_word_and_transliterated = translit(text_num_to_word, lang) # transliterating english words to lang
     
     mel = text_to_mel.generate_mel(text_num_to_word_and_transliterated, noise_scale=0.632, length_scale=0.80)
     audio, sr = mel_to_wav.generate_wav(mel)
-    write(filename='audio.p3', rate=sr, data=audio) # for saving wav file, if needed
+    write(filename=filepathtosave, rate=sr, data=audio) # for saving wav file, if needed
     return (sr, audio)
