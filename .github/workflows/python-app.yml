@@ -93,3 +93,4 @@ jobs:
     - name: runing views.py 
       run: |
         python -m memory_profiler views.py
+        dmesg -T| grep -E -i -B100 'killed process'
