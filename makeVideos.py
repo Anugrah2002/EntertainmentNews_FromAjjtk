@@ -35,7 +35,8 @@ def makeAudio(name,content):
             except Exception as e:
                 print(e)
                 return False
-        concatenate_audio_moviepy(os.path.join(settings.BASE_DIR, r"dataset/"+name + r"/*"), os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3"))
+            currentAudioIndex = currentAudioIndex + 1
+        concatenate_audio_moviepy(os.path.join(settings.BASE_DIR, r"dataset/"+name + r"/audio*"), os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3"))
         return True
     except Exception as e: 
         print('m.v. makeaudio')
