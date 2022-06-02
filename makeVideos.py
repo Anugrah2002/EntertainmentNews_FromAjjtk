@@ -13,7 +13,9 @@ import glob
 
 
 def concatenate_audio_moviepy(audio_clip_path, output_path):
-    clips = glob.glob(audio_clip_path)
+    audio_clip_path = glob.glob(audio_clip_path)
+    print(audio_clip_path)
+    clips = [AudioFileClip(c) for c in audio_clip_paths]
     final_clip = concatenate_audioclips(clips)
     final_clip.write_audiofile(output_path)
 
@@ -33,7 +35,7 @@ def makeAudio(name,content):
             except Exception as e:
                 print(e)
                 return False
-        concatenate_audio_moviepy(os.path.join(settings.BASE_DIR, r"dataset/"+name), os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3"))
+        concatenate_audio_moviepy(os.path.join(settings.BASE_DIR, r"dataset/"+name + r"/*"), os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3"))
         return True
     except Exception as e: 
         print('m.v. makeaudio')
