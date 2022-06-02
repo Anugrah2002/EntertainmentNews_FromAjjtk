@@ -18,7 +18,7 @@ def makeAudio(name,content):
     try:
         try:
             os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
-            sr,ttsG_audio = run_tts("विदेश",'hi')
+            sr,ttsG_audio = run_tts(content,'hi')
             print("Audio Generated")
             #ttsG_audio.save('audio.mp3')
         except Exception as e:
