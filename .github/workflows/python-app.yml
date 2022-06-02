@@ -71,6 +71,8 @@ jobs:
         pip install ez_setup
         pip install flake8 
         sudo apt-get install libsndfile1
+        pip install -U memory_profiler
+        
         
         
 #     - name: Lint with flake8
@@ -83,4 +85,4 @@ jobs:
 
     - name: runing views.py 
       run: |
-        python views.py
+        python -m memory_profiler views.py
