@@ -15,7 +15,7 @@ import glob
 def concatenate_audio_moviepy(audio_clip_path, output_path):
     audio_clip_path = glob.glob(audio_clip_path)
     print(audio_clip_path)
-    clips = [AudioFileClip(c) for c in audio_clip_paths]
+    clips = [AudioFileClip(c) for c in audio_clip_path]
     final_clip = concatenate_audioclips(clips)
     final_clip.write_audiofile(output_path)
 
