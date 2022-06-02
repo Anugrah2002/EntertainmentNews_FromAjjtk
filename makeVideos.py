@@ -9,22 +9,31 @@ import shutil
 from moviepy.editor import *
 import settings
 from vakyansh_translation_hindi_audio import *
+import glob
 
 
-
+def concatenate_audio_moviepy(audio_clip_path, output_path):
+    clips = glob.glob(audio_clip_path)
+    final_clip = concatenate_audioclips(clips)
+    final_clip.write_audiofile(output_path)
 
 
 def makeAudio(name,content):
     try:
-        try:
-            os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
-            filepathtosave = os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3) # with audio.mp3 appended            
-            sr,ttsG_audio = run_tts(content,'hi', filepathtosave)
-            print("Audio Generated")
-            #ttsG_audio.save('audio.mp3')
-        except Exception as e:
-            print(e)
-            return False
+        currentAudioIndex = 0 #to track audio file name    
+        text_in_list = content.split('.')
+        for textaf in text_in_list:
+            textaf = textaf + "." #To add period
+            try:
+                os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
+                filepathtosave = os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio" + str(currentAudioIndex) + ".mp3") # with audio.mp3 appended            
+                sr,ttsG_audio = run_tts(textaf,'hi', filepathtosave)
+                print("Audio Generated")
+                #ttsG_audio.save('audio.mp3')
+            except Exception as e:
+                print(e)
+                return False
+        concatenate_audio_moviepy(os.path.join(settings.BASE_DIR, r"dataset/"+name), os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3"))
         return True
     except Exception as e: 
         print('m.v. makeaudio')
