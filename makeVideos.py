@@ -146,7 +146,7 @@ def addAudioToVideo(name):
     try:
         os.chdir(os.path.join(settings.BASE_DIR, r"RequiredFiles/"))
         bgAudio = AudioFileClip('bgAudioEntertainment.mp3')
-        bgAudio = bgAudio.fx(afx.volumex, 0.2)
+        bgAudio = bgAudio.fx(afx.volumex, 0.1)
         os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
         print(os.listdir())
         audiofile = AudioFileClip('audio.mp3')
@@ -156,7 +156,7 @@ def addAudioToVideo(name):
         videoclip = videoclip.set_audio(audiofile)
         # videoclip.audio = new_audioclip
         videoclip = videoclip.subclip(0, audioFileDuration)
-        videoclip = videoclip.speedx(factor=1.1)
+        #videoclip = videoclip.speedx(factor=1.1)
         # videoclip = videoclip.fx(speedx, 1.3)
         os.chdir(os.path.join(settings.BASE_DIR, ""))
         videoclip.write_videofile("final"+".mp4")
