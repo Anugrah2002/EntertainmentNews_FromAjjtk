@@ -78,7 +78,6 @@ jobs:
         pip install ez_setup
         pip install flake8 
         sudo apt-get install libsndfile1
-        pip install -U memory_profiler
         
         
         
@@ -92,5 +91,8 @@ jobs:
 
     - name: runing views.py 
       run: |
-        python -m memory_profiler views.py
-        dmesg -T| grep -E -i -B100 'killed process'
+        python views.py
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: final.mp4
