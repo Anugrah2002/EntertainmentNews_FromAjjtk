@@ -26,13 +26,15 @@ def uploadfiletofirebase(filepath,YTtitle):
   firebase = Firebase(firebaseConfig)
 
   storage = firebase.storage()
+  filepath = "final.mp4"
+
 
   # as admin
   storage.child(filepath[:-5]+current_time+'.mp4').put(filepath)
   url=storage.child(filepath[:-5]+current_time+'.mp4').get_url(1)
   print(url)
-  #nameofVideo=filepath[:-5]+current_time+'.mp4'
-  nameofVideo = "final.mp4"
+  nameofVideo=filepath[:-5]+current_time+'.mp4'
+  #nameofVideo = "final.mp4"
 # 'http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/savevideoofaajtk/'
 # http://127.0.0.1:8000/entertain_news/savevideoofaajtk/
 
