@@ -81,7 +81,7 @@ def requestVideo():
 
         #command = 'python ./bott/uploadToYT.py --file="'+str(p)+'" --title="'+YTtitle+'" --description="'+(summary+'\n'+credit)+'" --keywords="'+keywords+',hour news,news" --category="24" --privacyStatus="public" --noauth_local_webserver ' 
         # uploadvideotoheroku(p,YTtitle)
-        #uploadfiletofirebase(p,YTtitle)
+        uploadfiletofirebase(p,YTtitle)
         
         #os.system(command) #comment this to stop uploading to youtube
         # shutil.rmtree(os.path.join(settings.BASE_DIR, r"dataset")) # comment this to stop removing the file from system
