@@ -56,13 +56,13 @@ jobs:
         pip install flake8 
         python -m pip install --upgrade gtts
         python -m pip install --upgrade gtts-token
-        pip install httplib2==0.15.0
-        pip install google-api-python-client==1.7.11
         pip install cloudinary
         pip install opencv-python
         pip install -r requirements.txt
         pip install firebase
         pip install firebase-admin
+        pip install httplib2==0.15.0
+        pip install google-api-python-client==1.7.11
         sudo apt-get install libegl1\
             libopus0\
             libwoff1\
