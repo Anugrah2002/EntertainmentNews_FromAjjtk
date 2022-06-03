@@ -9,22 +9,33 @@ import shutil
 from moviepy.editor import *
 import settings
 from vakyansh_translation_hindi_audio import *
+import glob
 
 
-
+def concatenate_audio_moviepy(audio_clip_path, output_path):
+    audio_clip_path = glob.glob(audio_clip_path)
+    print(audio_clip_path)
+    clips = [AudioFileClip(c) for c in audio_clip_path]
+    final_clip = concatenate_audioclips(clips)
+    final_clip.write_audiofile(output_path)
 
 def makeAudio(name,content):
     try:
-        try:
-            os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
-            ttsG = run_tts(content,'hi')
-            ttsG.save('audio.mp3')
-        except tts.gTTSError as e:
-            print(e)
-            return False
-        except Exception as e:
-            print(e)
-            return False
+        currentAudioIndex = 0 #to track audio file name    
+        text_in_list = content.split('.')
+        for textaf in text_in_list:
+            textaf = textaf + "." #To add period
+            try:
+                os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
+                filepathtosave = os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio" + str(currentAudioIndex) + ".mp3") # with audio.mp3 appended            
+                sr,ttsG_audio = run_tts(textaf,'hi', filepathtosave)
+                print("Audio Generated")
+                #ttsG_audio.save('audio.mp3')
+            except Exception as e:
+                print(e)
+                return False
+            currentAudioIndex = currentAudioIndex + 1
+        concatenate_audio_moviepy(os.path.join(settings.BASE_DIR, r"dataset/"+name + r"/audio*"), os.path.join(os.path.join(settings.BASE_DIR, r"dataset/"+name), "audio.mp3"))
         return True
     except Exception as e: 
         print('m.v. makeaudio')
@@ -134,7 +145,7 @@ def addAudioToVideo(name):
     try:
         os.chdir(os.path.join(settings.BASE_DIR, r"RequiredFiles/"))
         bgAudio = AudioFileClip('bgAudioEntertainment.mp3')
-        bgAudio = bgAudio.fx(afx.volumex, 0.2)
+        bgAudio = bgAudio.fx(afx.volumex, 0.1)
         os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
         print(os.listdir())
         audiofile = AudioFileClip('audio.mp3')
@@ -144,7 +155,7 @@ def addAudioToVideo(name):
         videoclip = videoclip.set_audio(audiofile)
         # videoclip.audio = new_audioclip
         videoclip = videoclip.subclip(0, audioFileDuration)
-        videoclip = videoclip.speedx(factor=1.1)
+        #videoclip = videoclip.speedx(factor=1.1)
         # videoclip = videoclip.fx(speedx, 1.3)
         os.chdir(os.path.join(settings.BASE_DIR, ""))
         videoclip.write_videofile("final"+".mp4")

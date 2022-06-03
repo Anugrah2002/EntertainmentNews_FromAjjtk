@@ -34,8 +34,9 @@ def uploadfiletofirebase(filepath,YTtitle):
   nameofVideo=filepath[:-5]+current_time+'.mp4'
 
 # 'http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/savevideoofaajtk/'
+# http://127.0.0.1:8000/entertain_news/savevideoofaajtk/
 
-  myurl = 'http://127.0.0.1:8000/entertain_news/savevideoofaajtk/'
+  myurl = 'http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/savevideoofaajtk/'
 
   
   titletopost = YTtitle
