@@ -1,8 +1,9 @@
 # from firebase import Firebase
 from firebase import Firebase
-from datetime import datetime
+# from datetime import date
+# from datetime import datetime
 import requests, json
-import re
+import re,datetime
 import firebase_admin
 from firebase_admin import storage as admin_storage, credentials, firestore
 # from firebase_admin import bucket
@@ -27,14 +28,29 @@ def cleanupFunction():
 
     for i in data:
         data=i['videoPublicId']
-        # NextDay_Date = datetime.datetime.today() - datetime.timedelta(days=2)
-        # formatted= NextDay_Date.strftime("%y-%m-%d")
+        NextDay_Date = datetime.datetime.today() - datetime.timedelta(days=1)
+        print(NextDay_Date)
+        formatted= NextDay_Date.strftime("%y-%m-%d")
+        print(type(formatted))
         print(data)
-        storage.delete(data)
-        return 'ok'
-
+        if re.search(formatted, data):
+            storage.delete(data)
+            
 cleanupFunction()
 
+"""
+line 30 me clenaup function json file se 1st index #
 
+in line 30 cleanup function is taking the fina2022-06-04 09:14:53.963409.mp4 of thr 1st index of json file
+in line 31 it is getting the previous day date it svalue is 2022-06-03 10:28:08.501052
+in line 32 it is printing the date 
+in line 33 it is conerting the datetime.datetime class into string class and fromat is yy-mm-dd
+in line 34 it is printing the type of conversion
+in line 35 it is printing the 1st index of json file it value is fina2022-06-04 09:14:53.963409.mp4
+in line 36 it is using search operation for finding the string date into the 1st index of json file
+in line 37 it is deleting if it is fined
+in line 38 it is returning ok 
+
+"""
 
     
