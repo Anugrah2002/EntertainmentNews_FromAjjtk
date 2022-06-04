@@ -8,10 +8,10 @@ import shutil
 from gtts import gTTS
 import random
 import settings
-import requests, json, datetime 
+import requests, json
 from uploadfiletoheroku import *
 from uploadtofirebase import *
-
+from datetime import datetime
 
 
 def checktime():
