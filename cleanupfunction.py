@@ -28,7 +28,7 @@ def cleanupFunction():
     for i in data:
         data=i['videoPublicId']
         storage.delete(data)
-
+    requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/cleanfromdb/')
 cleanupFunction()
 
 
