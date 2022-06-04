@@ -7,7 +7,7 @@ import os
 import shutil
 from gtts import gTTS
 import random
-import settings, datetime
+import settings
 import requests, json, datetime 
 from uploadfiletoheroku import *
 from uploadtofirebase import *
