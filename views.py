@@ -14,31 +14,31 @@ from uploadtofirebase import *
 
 
 
-# def checktime():
-#     fetchdata=requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/nextrandomforaajtk/')
-#     data=fetchdata.json()
-#     nextran= datetime.datetime.strptime(data['nextrandom'],"%Y-%m-%dT%H:%M:%SZ")
-#     print(nextran)
-#     datime=datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-#     print(datime)
-#     dateee=datetime.datetime.strptime(datime,"%Y-%m-%d %H:%M:%S")
-#     if (nextran < dateee):
-#        print("We will post video")
-#        requestVideo()
-#     else:
-#         print("We will wait for minutes since it is time error")
+def checktime():
+    fetchdata=requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/nextrandomforaajtk/')
+    data=fetchdata.json()
+    nextran= datetime.datetime.strptime(data['nextrandom'],"%Y-%m-%dT%H:%M:%SZ")
+    print(nextran)
+    datime=datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    print(datime)
+    dateee=datetime.datetime.strptime(datime,"%Y-%m-%d %H:%M:%S")
+    if (nextran < dateee):
+       print("We will post video")
+       requestVideo()
+    else:
+        print("We will wait for minutes since it is time error")
 
 
-# def replaceConflictsWords(content):
-#     #Replace Words which needs to be removed because of copyright or advertisement
-#     if (content != ''):
-#         content = content.replace('विज्ञापन','')
-#         content = content.replace('\n','')
-#         return content
-#     else:
-#         return content
+def replaceConflictsWords(content):
+    #Replace Words which needs to be removed because of copyright or advertisement
+    if (content != ''):
+        content = content.replace('विज्ञापन','')
+        content = content.replace('\n','')
+        return content
+    else:
+        return content
 
-#     #All words replaced
+    #All words replaced
     
    
 
@@ -52,7 +52,7 @@ def requestVideo():
         title=(r.json()['title'])
         YTtitle=(r.json()['Ytitle'])
         content=(r.json()['content'])
-        # content = replaceConflictsWords(content)
+        content = replaceConflictsWords(content)
         print(content)
         summary=(r.json()['summary'])
         if title == 0 or title is None or content is None or content == '':
