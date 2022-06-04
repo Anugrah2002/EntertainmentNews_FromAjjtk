@@ -94,5 +94,5 @@ def requestVideo():
 
     
 
-# checktime()
-requestVideo()
+checktime()
+# requestVideo()
