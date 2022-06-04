@@ -28,6 +28,7 @@ def cleanupFunction():
 
     for i in data:
         data=i['videoPublicId']
+<<<<<<< HEAD
         NextDay_Date = datetime.datetime.today() - datetime.timedelta(days=1)
         print(NextDay_Date)
         formatted= NextDay_Date.strftime("%y-%m-%d")
@@ -36,6 +37,10 @@ def cleanupFunction():
         if re.search(formatted, data):
             storage.delete(data)
             
+=======
+        storage.delete(data)
+
+>>>>>>> 7d4fd695eaded8bd933fa40f8c722f0507eefec1
 cleanupFunction()
 
 """
