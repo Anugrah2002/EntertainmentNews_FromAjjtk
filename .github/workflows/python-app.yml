@@ -94,6 +94,11 @@ jobs:
     - name: runing views.py 
       run: |
         python views.py
+        
+    - name: runing cleanupfunction.py
+      run: |
+        python cleanupfunction.py
+
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
