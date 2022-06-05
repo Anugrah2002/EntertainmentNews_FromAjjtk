@@ -163,7 +163,7 @@ def generate_video_from_moviepy(name):
 
 
         video = concatenate_videoclips(slides)
-        video.write_videofile(video_name)
+        video.write_videofile(video_name, verbose=False)
     except Exception as e:
         print(e)
 
