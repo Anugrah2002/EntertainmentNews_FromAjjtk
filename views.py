@@ -40,7 +40,7 @@ def replaceConflictsWords(content):
 
     #All words replaced
     
- def fixYTtitle(YTtitle):
+def fixYTtitle(YTtitle):
     YTtitle = YTtitle.replace(",", "")
     if len(YTtitle) > 100:
         #Invalid Title
