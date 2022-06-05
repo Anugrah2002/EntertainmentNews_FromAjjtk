@@ -148,7 +148,7 @@ def generate_video_from_moviepy(name):
         
         #Total video length will be setduration * num of images
         audioLength = AudioFileClip('audio.mp3').duration
-        videoToLoop = (audioLength / (len(images) * 3)) + 1
+        videoToLoop = int((audioLength / (len(images) * 3)) + 1)
         
         for itertator in range(videoToLoop):
             images = images + images
