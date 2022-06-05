@@ -11,7 +11,7 @@ import settings
 import requests, json
 from uploadfiletoheroku import *
 from uploadtofirebase import *
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def checktime():
