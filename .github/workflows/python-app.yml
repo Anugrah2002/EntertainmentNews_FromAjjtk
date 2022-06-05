@@ -9,11 +9,10 @@ name: youtube entertainment bot
 on:
   schedule:
     - cron: "* */1 * * *"
-# on:
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   hello_world_job:
