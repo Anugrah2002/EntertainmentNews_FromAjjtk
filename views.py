@@ -19,7 +19,7 @@ def checktime():
     data=fetchdata.json()
     nextran= datetime.strptime(data['nextrandom'],"%Y-%m-%dT%H:%M:%SZ")
     print(nextran)
-    datime=datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    datime=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     print(datime)
     dateee=datetime.strptime(datime,"%Y-%m-%d %H:%M:%S")
     if (nextran < dateee):
