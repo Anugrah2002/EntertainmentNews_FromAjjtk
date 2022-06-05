@@ -45,10 +45,10 @@ def replaceConflictsWords(content):
     if len(YTtitle) > 100:
         #Invalid Title
         YTtitlewordlist = YTtitle.split(" ")
-        updatedTitle = ""
-        for words in YTtitlewordlist:
+        updatedTitle = YTtitlewordlist[0]
+        for words in YTtitlewordlist[1:]:
             if len(updatedTitle) < 100:
-                updatedTitle = updatedTitle + words
+                updatedTitle = updatedTitle + " " + words
             else:
                 return updatedTitle
     return YTtitle
