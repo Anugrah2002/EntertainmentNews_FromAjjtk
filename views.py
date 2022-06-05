@@ -47,7 +47,7 @@ def fixYTtitle(YTtitle):
         YTtitlewordlist = YTtitle.split(" ")
         updatedTitle = YTtitlewordlist[0]
         for words in YTtitlewordlist[1:]:
-            if len(updatedTitle) < 100:
+            if len(updatedTitle + " " + words) < 100:
                 updatedTitle = updatedTitle + " " + words
             else:
                 return updatedTitle
