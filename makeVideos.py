@@ -10,7 +10,8 @@ from moviepy.editor import *
 import settings
 from vakyansh_translation_hindi_audio import *
 import glob
-
+import math
+import numpy
 
 def concatenate_audio_moviepy(audio_clip_path, output_path):
     audio_clip_path = glob.glob(audio_clip_path)
@@ -93,7 +94,7 @@ def makeVideo(name,content):
                 imResize = im.resize((mean_width, mean_height), Image.ANTIALIAS) 
                 imResize.save( file, 'JPEG', quality = 95) # setting quality 
 
-        generate_video(name) 
+        generate_video_from_moviepy(name) 
 
         print('Video Generated')
 
@@ -103,6 +104,68 @@ def makeVideo(name,content):
     except Exception as e:
         print(e)
 
+def zoom_in_effect(clip, zoom_ratio=0.04):
+    def effect(get_frame, t):
+        img = Image.fromarray(get_frame(t))
+        base_size = img.size
+
+        new_size = [
+            math.ceil(img.size[0] * (1 + (zoom_ratio * t))),
+            math.ceil(img.size[1] * (1 + (zoom_ratio * t)))
+        ]
+
+        # The new dimensions must be even.
+        new_size[0] = new_size[0] + (new_size[0] % 2)
+        new_size[1] = new_size[1] + (new_size[1] % 2)
+
+        img = img.resize(new_size, Image.LANCZOS)
+
+        x = math.ceil((new_size[0] - base_size[0]) / 2)
+        y = math.ceil((new_size[1] - base_size[1]) / 2)
+
+        img = img.crop([
+            x, y, new_size[0] - x, new_size[1] - y
+        ]).resize(base_size, Image.LANCZOS)
+
+        result = numpy.array(img)
+        img.close()
+
+        return result
+
+    return clip.fl(effect)
+
+
+def generate_video_from_moviepy(name):
+    try:
+        size = (1920, 1080)
+
+        image_folder = '.' # make sure to use your folder 
+        video_name = 'mygeneratedvideo.mp4'
+        os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
+        print(os.listdir())
+        images = [img for img in os.listdir(image_folder) 
+        if img.endswith(".jpg") or img.endswith(".jpeg") or img.endswith("png")]
+        
+        #Total video length will be setduration * num of images
+        audioLength = AudioFileClip('audio.mp3').duration
+        videoToloop = (audioLength / (len(images) * 3)) + 1
+        
+        for itertator in range(videoToLoop):
+            images = images + images
+
+        slides = []
+        for n, url in enumerate(images):
+            slides.append(
+                ImageClip(url).set_fps(25).set_duration(3).resize(size)
+            )
+
+            slides[n] = zoom_in_effect(slides[n], 0.04)
+
+
+        video = concatenate_videoclips(slides)
+        video.write_videofile(video_name)
+    except Exception as e:
+        print(e)
 
 # Video Generating function 
 def generate_video(name):
