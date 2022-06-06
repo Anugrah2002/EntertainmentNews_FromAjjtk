@@ -140,19 +140,11 @@ def slide_fade_effect(slides):
     clips = []
     clips.append(slides[0])
     idx = slides[0].duration - padding
-    for slide in slides:
-        whicheffect = random.randint(1, 5)
-
-        if whicheffect == 1:
+    for index, slide in enumerate(slides):
+        if index % 6 != 0:
             clips.append(slide.set_start(idx).crossfadein(padding))
-        elif whicheffect == 2:
-            clips.append(slide.fx( transfx.slide_out, 1, 'right'))
-        elif whicheffect == 3:
+        else:
             clips.append(slide.fx( transfx.slide_out, 1, 'bottom'))
-        elif whicheffect == 4:
-            clips.append(slide.fx( transfx.slide_in, 1, 'top'))
-        elif whicheffect == 5:
-            clips.append(slide.fx( transfx.slide_in, 1, 'right'))
 
         idx += slide.duration - padding
     
@@ -173,7 +165,8 @@ def generate_video_from_moviepy(name):
         
         #Total video length will be setduration * num of images
         audioLength = AudioFileClip('audio.mp3').duration
-        videoToLoop = int((audioLength / (len(images) * 3)) + 1)
+        durationofoneclip = 5 #set_duration
+        videoToLoop = int((audioLength / (len(images) * durationofoneclip)) + 1)
         
         for itertator in range(videoToLoop):
             images = images + images
@@ -181,7 +174,7 @@ def generate_video_from_moviepy(name):
         slides = []
         for n, url in enumerate(images):
             slides.append(
-                ImageClip(url).set_fps(25).set_duration(3).resize(size)
+                ImageClip(url).set_fps(25).set_duration(durationofoneclip).resize(size)
             )
 
             slides[n] = zoom_in_effect(slides[n], 0.04)
