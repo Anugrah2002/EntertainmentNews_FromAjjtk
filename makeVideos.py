@@ -13,14 +13,13 @@ import glob
 import math
 import numpy
 import random
-from moviepy.video.fx import volumex
 
 def concatenate_audio_moviepy(audio_clip_path, output_path):
     pauseDuration = '80' #in millisecond
     audio_clip_path = glob.glob(audio_clip_path)
     print(audio_clip_path)
     clips = [AudioFileClip(c) for c in audio_clip_path]
-    mutedClip = clips[0].fx( volumex, 0.0).subclip('00:00:00.00', '00:00:00.' + pauseDuration)
+    mutedClip = clips[0].fx( afx.volumex, 0.0).subclip('00:00:00.00', '00:00:00.' + pauseDuration)
     clipsAfterAddingPause = []
     for clip in clips:
         clipsAfterAddingPause.append(clip)
