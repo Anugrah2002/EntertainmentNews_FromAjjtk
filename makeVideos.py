@@ -13,13 +13,14 @@ import glob
 import math
 import numpy
 import random
+from moviepy.video.fx import volumex
 
 def concatenate_audio_moviepy(audio_clip_path, output_path):
     pauseDuration = '80' #in millisecond
     audio_clip_path = glob.glob(audio_clip_path)
     print(audio_clip_path)
     clips = [AudioFileClip(c) for c in audio_clip_path]
-    mutedClip = clips[0].multiply_volume(0).subclip('00:00:00.00', '00:00:00.' + pauseDuration)
+    mutedClip = clips[0].fx( volumex, 0.0).subclip('00:00:00.00', '00:00:00.' + pauseDuration)
     clipsAfterAddingPause = []
     for clip in clips:
         clipsAfterAddingPause.append(clip)
@@ -148,7 +149,7 @@ def slide_fade_effect(slides):
     clips.append(slides[0])
     idx = slides[0].duration - padding
     for index, slide in enumerate(slides):
-        if index % 6 != 0:
+        if (index % 6 != 0) or True: #True always till found the reason to why screen gets blank
             clips.append(slide.set_start(idx).crossfadein(padding))
         else:
             clips.append(slide.fx( transfx.slide_out, 1, 'bottom'))
