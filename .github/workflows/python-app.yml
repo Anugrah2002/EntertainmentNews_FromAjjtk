@@ -8,7 +8,7 @@ name: youtube entertainment bot
 # uncommment or comment below lines for activating or deactivating the cron job 
 on:
   schedule:
-    - cron: "* */1 * * *"
+    - cron: "* */4 * * *"
   push:
     branches: [ master ]
   pull_request:
