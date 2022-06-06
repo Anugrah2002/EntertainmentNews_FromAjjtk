@@ -25,7 +25,8 @@ def concatenate_audio_moviepy(audio_clip_path, output_path):
         clipsAfterAddingPause.append(clip)
         clipsAfterAddingPause.append(mutedClip)
     final_clip = concatenate_audioclips(clipsAfterAddingPause)
-    final_clip.write_audiofile(output_path)
+    final_clip.write_audiofile(output_path, verbose= False, logger= None)
+    print("Audio Concatenated Successfully")
 
 def makeAudio(name,content):
     try:
@@ -187,7 +188,8 @@ def generate_video_from_moviepy(name):
 
         video = slide_fade_effect(slides)
         #video = concatenate_videoclips(slides)
-        video.write_videofile(video_name, verbose=False)
+        video.write_videofile(video_name, verbose= False, logger= None)
+        print("Video Generated from Moviepy before Audio Successfully")
     except Exception as e:
         print(e)
 
@@ -245,7 +247,8 @@ def addAudioToVideo(name):
         #videoclip = videoclip.speedx(factor=1.1)
         # videoclip = videoclip.fx(speedx, 1.3)
         os.chdir(os.path.join(settings.BASE_DIR, ""))
-        videoclip.write_videofile("final"+".mp4")
+        videoclip.write_videofile("final"+".mp4", verbose= False, logger= None)
+        print("Video Generated Successfully")
     except Exception as e:
         print('addaudioto video m.v.')
         print(e)
