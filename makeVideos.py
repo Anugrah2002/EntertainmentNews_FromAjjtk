@@ -141,7 +141,7 @@ def slide_fade_effect(slides):
     clips.append(slides[0])
     idx = slides[0].duration - padding
     for slide in slides:
-        int whicheffect = random.randint(1, 5)
+        whicheffect = random.randint(1, 5)
 
         if whicheffect == 1:
             clips.append(slide.set_start(idx).crossfadein(padding))
