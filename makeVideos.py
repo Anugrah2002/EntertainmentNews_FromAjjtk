@@ -145,13 +145,13 @@ def slide_fade_effect(slides):
 
         if whicheffect == 1:
             clips.append(slide.set_start(idx).crossfadein(padding))
-        else if whicheffect == 2:
+        elif whicheffect == 2:
             clips.append(slide.fx( transfx.slide_out, 1, 'right'))
-        else if whicheffect == 3:
+        elif whicheffect == 3:
             clips.append(slide.fx( transfx.slide_out, 1, 'bottom'))
-        else if whicheffect == 4:
+        elif whicheffect == 4:
             clips.append(slide.fx( transfx.slide_in, 1, 'top'))
-        else if whicheffect == 5:
+        elif whicheffect == 5:
             clips.append(slide.fx( transfx.slide_in, 1, 'right'))
 
         idx += slide.duration - padding
