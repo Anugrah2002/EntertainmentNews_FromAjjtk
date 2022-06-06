@@ -12,6 +12,7 @@ from vakyansh_translation_hindi_audio import *
 import glob
 import math
 import numpy
+import random
 
 def concatenate_audio_moviepy(audio_clip_path, output_path):
     audio_clip_path = glob.glob(audio_clip_path)
@@ -134,7 +135,31 @@ def zoom_in_effect(clip, zoom_ratio=0.04):
 
     return clip.fl(effect)
 
+def slide_fade_effect(slides):
+    padding = 2
+    clips = []
+    clips.append(slides[0])
+    idx = slides[0].duration - padding
+    for slide in slides:
+        int whicheffect = random.randint(1, 5)
 
+        if whicheffect == 1:
+            clips.append(slide.set_start(idx).crossfadein(padding))
+        else if whicheffect == 2:
+            clips.append(slide.fx( transfx.slide_out, 1, 'right'))
+        else if whicheffect == 3:
+            clips.append(slide.fx( transfx.slide_out, 1, 'bottom'))
+        else if whicheffect == 4:
+            clips.append(slide.fx( transfx.slide_in, 1, 'top'))
+        else if whicheffect == 5:
+            clips.append(slide.fx( transfx.slide_in, 1, 'right'))
+
+        idx += slide.duration - padding
+    
+    final_video = CompositeVideoClip(clips)
+    
+    return final_video
+    
 def generate_video_from_moviepy(name):
     try:
         size = (1920, 1080)
@@ -161,8 +186,8 @@ def generate_video_from_moviepy(name):
 
             slides[n] = zoom_in_effect(slides[n], 0.04)
 
-
-        video = concatenate_videoclips(slides)
+        video = slide_fade_effect(slides)
+        #video = concatenate_videoclips(slides)
         video.write_videofile(video_name, verbose=False)
     except Exception as e:
         print(e)
