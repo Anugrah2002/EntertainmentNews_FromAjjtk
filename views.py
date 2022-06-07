@@ -34,6 +34,7 @@ def replaceConflictsWords(content):
     if (content != ''):
         content = content.replace('विज्ञापन','')
         content = content.replace('\n','')
+        content = content.replace("Copyright © 2022 Living Media India Limited. For reprint rights: Syndications Today Add Aaj Tak to Home Screen", "")
         return content
     else:
         return content
