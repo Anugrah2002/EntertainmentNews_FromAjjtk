@@ -13,6 +13,7 @@ from uploadfiletoheroku import *
 from uploadtofirebase import *
 from datetime import datetime, timezone
 import urllib.request
+import settings
 
 
 def checktime():
@@ -70,7 +71,7 @@ def requestVideo():
         print('line 70')
         print(os.getcwd())
         print('line 72')
-        imagedownload = urllib.request.urlretrieve(image_url,'/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'thumbnailimage.jpg')
+        imagedownload = urllib.request.urlretrieve(image_url,os.path.join(settings.BASE_DIR, r"dataset/"+title+r'/thumbnail.png'))
         #imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
         content = replaceConflictsWords(content)
         print(content)
