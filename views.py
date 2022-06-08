@@ -67,7 +67,11 @@ def requestVideo():
         YTtitle=(r.json()['Ytitle'])
         content=(r.json()['content'])
         image_url = (r.json()['image_url'])
-        imagedownload = urllib.request.urlretrieve(image_url,'/home/runner/work/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'image.jpg')
+        print('line 70')
+        print(os.getcwd())
+        print('line 72')
+        imagedownload = urllib.request.urlretrieve(image_url,'/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'thumbnailimage.jpg')
+        #imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
         content = replaceConflictsWords(content)
         print(content)
         summary=(r.json()['summary'])
@@ -115,5 +119,5 @@ def requestVideo():
 
     
 
-checktime()
-# requestVideo()
+#checktime()
+requestVideo()
