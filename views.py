@@ -12,6 +12,7 @@ import requests, json
 from uploadfiletoheroku import *
 from uploadtofirebase import *
 from datetime import datetime, timezone
+import urllib.request
 
 
 def checktime():
@@ -65,9 +66,16 @@ def requestVideo():
         title=(r.json()['title'])
         YTtitle=(r.json()['Ytitle'])
         content=(r.json()['content'])
+        image_url = (r.json()['image_url'])
+        imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
         content = replaceConflictsWords(content)
         print(content)
         summary=(r.json()['summary'])
+
+        file = open(r'thumbnailimages/' 'w')
+        file.write(imagedownload)
+        file.close
+
         if title == 0 or title is None or content is None or content == '':
             print("Content or title is either blank or incorrect")
             exit()
