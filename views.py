@@ -69,7 +69,7 @@ def requestVideo():
         image_url = (r.json()['image_url'])
         print('line 70')
         os.system('pwd')
-        print('line 72)
+        print('line 72')
         imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
         content = replaceConflictsWords(content)
         print(content)
