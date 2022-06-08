@@ -67,7 +67,7 @@ def requestVideo():
         YTtitle=(r.json()['Ytitle'])
         content=(r.json()['content'])
         image_url = (r.json()['image_url'])
-        imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
+        imagedownload = urllib.request.urlretrieve(image_url,'/home/runner/work/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'image.jpg')
         content = replaceConflictsWords(content)
         print(content)
         summary=(r.json()['summary'])
