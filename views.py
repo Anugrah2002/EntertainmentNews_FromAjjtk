@@ -68,7 +68,7 @@ def requestVideo():
         content=(r.json()['content'])
         image_url = (r.json()['image_url'])
         print('line 70')
-        print(os.system('pwd'))
+        print(os.getcwd())
         print('line 72')
         imagedownload = urllib.request.urlretrieve(image_url,'work/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'image.jpg')
         #imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
