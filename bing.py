@@ -34,6 +34,7 @@ class Bing:
 
     def save_image(self, link, file_path):
         try:
+            link = link.split('?')[0]
             request = urllib.request.Request(link, None, self.headers)
             image = urllib.request.urlopen(request, timeout=self.timeout).read()
             if not imghdr.what(None, image):
