@@ -70,7 +70,7 @@ def requestVideo():
         print('line 70')
         print(os.getcwd())
         print('line 72')
-        imagedownload = urllib.request.urlretrieve(image_url,'work/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'image.jpg')
+        imagedownload = urllib.request.urlretrieve(image_url,'/EntertainmentNews_FromAjjtk/EntertainmentNews_FromAjjtk/dataset/'+ title + '/' +'thumbnailimage.jpg')
         #imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
         content = replaceConflictsWords(content)
         print(content)
