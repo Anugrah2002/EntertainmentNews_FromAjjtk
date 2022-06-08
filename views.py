@@ -71,7 +71,7 @@ def requestVideo():
         print('line 70')
         print(os.getcwd())
         print('line 72')
-        imagedownload = urllib.request.urlretrieve(image_url,os.path.join(settings.BASE_DIR, r"dataset/'"+title+r"'/thumbnail.png"))
+        imagedownload = urllib.request.urlretrieve(image_url,str(os.path.join(settings.BASE_DIR, r"dataset/'"+title+r"'/thumbnail.png")))
         #imagedownload = urllib.request.urlretrieve(image_url,'image.jpg')
         print("Done saving the image")
         content = replaceConflictsWords(content)
