@@ -79,10 +79,6 @@ def requestVideo():
         print(content)
         summary=(r.json()['summary'])
 
-        file = open(r'thumbnailimages/' 'w')
-        file.write(imagedownload)
-        file.close
-
         if title == 0 or title is None or content is None or content == '':
             print("Content or title is either blank or incorrect")
             exit()
