@@ -83,7 +83,7 @@ def requestVideo():
             print("Content or title is either blank or incorrect")
             exit()
         
-
+        print('line 86 views')
         newYTtitle = YTtitle
         p = makeVideo(newYTtitle+' hd',content)
         print('2')
@@ -94,6 +94,7 @@ def requestVideo():
             return 'GTTS ERR'
             print('4')
 
+        print('line 97 views')
         os.chdir(os.path.join(settings.BASE_DIR,''))
 
         credit = '''\nWe take DMCA very seriously. All the images are from Bing Images.Since all the contents are not moderated so If anyway we hurt anyone sentiment, send us a request with valid proof.
