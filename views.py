@@ -94,8 +94,9 @@ def requestVideo():
             return 'GTTS ERR'
             print('4')
 
-        print('line 97 views')
+        
         os.chdir(os.path.join(settings.BASE_DIR,''))
+        print('line 97 views')
 
         credit = '''\nWe take DMCA very seriously. All the images are from Bing Images.Since all the contents are not moderated so If anyway we hurt anyone sentiment, send us a request with valid proof.
         '''
