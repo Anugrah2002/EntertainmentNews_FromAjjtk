@@ -69,7 +69,7 @@ def requestVideo():
         content=(r.json()['content'])
         image_url = (r.json()['image_url'])
         print('line 70')
-        print(os.chdir(path=str(os.path.join(settings.BASE_DIR +'/thumbnailimages/'))))
+        print(os.chdir(str(os.path.join(settings.BASE_DIR +'/thumbnailimages/'))))
         print(os.getcwd())
         print('line 72')
         imagedownload = urllib.request.urlretrieve(image_url,str(os.path.join(settings.BASE_DIR, r"dataset/'"+title+r"'/thumbnail.png")))
