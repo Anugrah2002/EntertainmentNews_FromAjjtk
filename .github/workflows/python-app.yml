@@ -62,6 +62,7 @@ jobs:
         pip install firebase-admin
         pip install httplib2==0.15.0
         pip install google-api-python-client==1.7.11
+        sudo apt-get update
         sudo apt-get install libegl1\
             libopus0\
             libwoff1\
