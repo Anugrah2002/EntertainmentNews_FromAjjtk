@@ -233,8 +233,8 @@ def generate_video(name):
 def addAudioToVideo(name):
     try:
         os.chdir(os.path.join(settings.BASE_DIR, r"RequiredFiles/"))
-        bgAudio = AudioFileClip('bgAudioEntertainment.mp3')
-        bgAudio = bgAudio.fx(afx.volumex, 0.1)
+        bgAudio = AudioFileClip('bgAudioNews.mp3')
+        bgAudio = bgAudio.fx(afx.volumex, 0.2)
         os.chdir(os.path.join(settings.BASE_DIR, r"dataset/"+name))
         print(os.listdir())
         audiofile = AudioFileClip('audio.mp3')
