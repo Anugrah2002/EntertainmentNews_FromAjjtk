@@ -22,14 +22,17 @@ storage=firebase.storage()
 
 
 def cleanupFunction():
-    data=requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/clean/')
-    data=data.json()
-    print(data)
+    try:
+        data=requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/clean/')
+        data=data.json()
+        print(data)
 
-    for i in data:
-        data=i['videoPublicId']
-        storage.delete(data)
-    requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/cleanfromdb/')
+        for i in data:
+            data=i['videoPublicId']
+            storage.delete(data)
+        requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/cleanfromdb/')
+     except:
+        print("File not found")
 cleanupFunction()
 
 """
