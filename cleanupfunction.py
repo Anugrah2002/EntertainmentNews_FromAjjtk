@@ -31,7 +31,7 @@ def cleanupFunction():
             data=i['videoPublicId']
             storage.delete(data)
         requests.get('http://ytserver.eu-gb.cf.appdomain.cloud/entertain_news/cleanfromdb/')
-     except:
+    except:
         print("File not found")
 cleanupFunction()
 
